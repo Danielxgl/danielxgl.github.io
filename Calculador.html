@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>¿Cuál conviene?</title>
+  <style>
+    :root { --gap: 12px; --radius: 10px; --shadow: 0 6px 24px rgba(0,0,0,.08); }
+    * { box-sizing: border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+    body { margin: 0; padding: 24px; background: #f6f7f9; color: #111; }
+    .card { max-width: 760px; margin: 0 auto; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+    h1 { margin: 0 0 8px; font-size: 1.4rem; }
+    p.helper { margin: 0 0 16px; color: #555; font-size: .95rem; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); }
+    .field { display: grid; gap: 6px; }
+    label { font-weight: 600; font-size: .95rem; }
+    input { padding: 10px 12px; border: 1px solid #dcdfe4; border-radius: 8px; font-size: 1rem; }
+    input:invalid { border-color: #e76e55; outline: none; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+    .unit { background: #f3f4f7; border-radius: 8px; padding: 10px 12px; font-variant-numeric: tabular-nums; }
+    .actions { display: flex; gap: var(--gap); margin-top: 12px; flex-wrap: wrap; }
+    button { padding: 10px 14px; border-radius: 8px; border: 0; background: #111; color: #fff; cursor: pointer; font-weight: 600; }
+    button.secondary { background: #e9ebef; color: #111; }
+    .result { margin-top: 14px; padding: 14px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fbfbfd; }
+    .best { font-weight: 700; }
+    .muted { color: #666; }
+    .ok { color: #0e7a3e; }
+    .warn { color: #b54708; }
+    @media (max-width: 720px) {
+      .grid, .row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Comparador rápido de productos</h1>
+    <p class="helper">Ingresa las <strong>unidades</strong> y el <strong>precio</strong> de dos productos. Podrás calcular el costo por unidad y saber cuál conviene más.</p>
+
+    <div class="grid" role="group" aria-labelledby="prod1">
+      <div>
+        <h2 id="prod1" style="font-size:1.05rem;margin:4px 0 8px;">Producto 1</h2>
+        <div class="row">
+          <div class="field">
+            <label for="u1">Unidades</label>
+            <input id="u1" type="number" inputmode="decimal" min="0.000001" step="0.000001" placeholder="por ejemplo, 10" required />
+          </div>
+          <div class="field">
+            <label for="p1">Precio ($)</label>
+            <input id="p1" type="number" inputmode="decimal" min="0" step="0.01" placeholder="por ejemplo, 2.00" required />
+          </div>
+        </div>
+        <div class="unit" id="uprice1">Costo por unidad: —</div>
+      </div>
+
+      <div>
+        <h2 id="prod2" style="font-size:1.05rem;margin:4px 0 8px;">Producto 2</h2>
+        <div class="row">
+          <div class="field">
+            <label for="u2">Unidades</label>
+            <input id="u2" type="number" inputmode="decimal" min="0.000001" step="0.000001" placeholder="por ejemplo, 6" required />
+          </div>
+          <div class="field">
+            <label for="p2">Precio ($)</label>
+            <input id="p2" type="number" inputmode="decimal" min="0" step="0.01" placeholder="por ejemplo, 1.00" required />
+          </div>
+        </div>
+        <div class="unit" id="uprice2">Costo por unidad: —</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="calc">Calcular</button>
+      <button class="secondary" id="clear">Limpiar</button>
+    </div>
+
+    <div class="result" id="result" aria-live="polite">
+      Ingresa los valores y presiona “Calcular”.
+    </div>
+
+    <p class="muted" style="margin-top:10px;font-size:.9rem;">
+      Nota: esta herramienta compara los <em>costos por unidad</em> de cada producto, es decir, precio ÷ unidades. Si hay empate, se indicará.
+    </p>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const fmt = new Intl.NumberFormat('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 6 });
+
+    function unitPrice(price, units) {
+      if (!isFinite(price) || !isFinite(units) || units <= 0) return NaN;
+      return price / units;
+    }
+
+    function render() {
+      const u1 = parseFloat($('u1').value);
+      const p1 = parseFloat($('p1').value);
+      const u2 = parseFloat($('u2').value);
+      const p2 = parseFloat($('p2').value);
+
+      const up1 = unitPrice(p1, u1);
+      const up2 = unitPrice(p2, u2);
+
+      $('uprice1').textContent = isFinite(up1) ? `Costo por unidad: $ ${fmt.format(up1)}` : 'Costo por unidad: —';
+      $('uprice2').textContent = isFinite(up2) ? `Costo por unidad: $ ${fmt.format(up2)}` : 'Costo por unidad: —';
+
+      const res = $('result');
+
+      if (!isFinite(up1) || !isFinite(up2)) {
+        res.innerHTML = 'Ingresa valores válidos. Las unidades deben ser &gt; 0. El precio puede ser 0 o mayor.';
+        res.className = 'result warn';
+        return;
+      }
+
+      // Tolerancia para empates por redondeo
+      const eps = 1e-9;
+      if (Math.abs(up1 - up2) <= eps) {
+        res.innerHTML = `Empate. Ambos productos cuestan <strong>$ ${fmt.format(up1)}</strong> por unidad.`;
+        res.className = 'result';
+      } else if (up1 < up2) {
+        const ahorro = ((up2 - up1) / up2) * 100;
+        res.innerHTML = `<span class="best ok">Te conviene el producto 1.</span> El ahorro aproximado es de <strong>${fmt.format(ahorro)}%</strong> por unidad.`;
+        res.className = 'result ok';
+      } else {
+        const ahorro = ((up1 - up2) / up1) * 100;
+        res.innerHTML = `<span class="best ok">Te conviene el producto 2.</span> El ahorro aproximado es de <strong>${fmt.format(ahorro)}%</strong> por unidad.`;
+        res.className = 'result ok';
+      }
+    }
+
+    $('calc').addEventListener('click', render);
+    ['u1','p1','u2','p2'].forEach(id => $(id).addEventListener('input', () => {
+      // cálculo en vivo sin molestar si faltan datos
+      const filled = ['u1','p1','u2','p2'].every(i => $(i).value !== '');
+      if (filled) render();
+    }));
+
+    $('clear').addEventListener('click', () => {
+      ['u1','p1','u2','p2'].forEach(id => $(id).value = '');
+      $('uprice1').textContent = 'Costo por unidad: —';
+      $('uprice2').textContent = 'Costo por unidad: —';
+      $('result').className = 'result';
+      $('result').textContent = 'Ingresa los valores y presiona “Calcular”.';
+      $('u1').focus();
+    });
+  </script>
+</body>
+</html>
