@@ -5,38 +5,43 @@
   <meta name="theme-color" content="#ffffff">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>¿Cuál conviene?</title>
+  <title>Comparador de productos</title>
   <style>
-    :root { --gap: 12px; --radius: 10px; --shadow: 0 6px 24px rgba(0,0,0,.08); }
+    :root { --gap: 8px; --radius: 10px; --shadow: 0 6px 24px rgba(0,0,0,.08); }
     * { box-sizing: border-box; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
     body { margin: 0; padding: 24px; background: #f6f7f9; color: #111; }
-    .card { max-width: 760px; margin: 0 auto; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+    .card { max-width: var(device-width); margin: 0 auto; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; overflow-wrap: break-word; }
     h1 { margin: 0 0 8px; font-size: 1.4rem; }
-    p.helper { margin: 0 0 16px; color: #555; font-size: .95rem; }
+    p.helper { margin: 0 0 12px; color: #555; font-size: .95rem; }
     .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); }
-    .field { display: grid; gap: 6px; }
+    .field { display: grid; gap: 8px; min-width: 0; }
     label { font-weight: 600; font-size: .95rem; }
-    input { padding: 10px 12px; border: 1px solid #dcdfe4; border-radius: 8px; font-size: 1rem; }
+    input { padding: 8px 10px; border: 2px solid #dcdfe4; border-radius: 10px; font-size: 1rem; min-width: 0; width: 100%; }
     input:invalid { border-color: #e76e55; outline: none; }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
-    .unit { background: #f3f4f7; border-radius: 8px; padding: 10px 12px; font-variant-numeric: tabular-nums; }
-    .actions { display: flex; gap: var(--gap); margin-top: 12px; flex-wrap: wrap; }
-    button { padding: 10px 14px; border-radius: 8px; border: 0; background: #111; color: #fff; cursor: pointer; font-weight: 600; }
+    .row { display: flex; flex-wrap: wrap; gap: var(--gap); min-width: 0; }
+    .row .field { flex: 1 1 150px; min-width: min(150px, 100%); }
+    .unit { background: #f3f4f7; margin-top: 8px; border-radius: 10px; padding: 8px 10px; font-variant-numeric: tabular-nums; min-width: 0; overflow-wrap: break-word; }
+    .actions { display: flex; gap: var(--gap); margin-top: 10px; flex-wrap: wrap; }
+    button { padding: 8px 12px; border-radius: 10px; border: 2px solid #dcdfe4; background: #111; color: #fff; cursor: pointer; font-weight: 600; }
     button.secondary { background: #e9ebef; color: #111; }
-    .result { margin-top: 14px; padding: 14px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fbfbfd; }
+    .result { margin-top: 10px; padding: 10px; border: 2px solid #e5e7eb; border-radius: 10px; background: #fbfbfd; overflow-wrap: break-word; }
     .best { font-weight: 700; }
     .muted { color: #666; }
     .ok { color: #0e7a3e; }
     .warn { color: #b54708; }
-    @media (max-width: 720px) {
-      .grid, .row { grid-template-columns: 1fr; }
+    @media (max-width: 480px) {
+      body { padding: 12px; }
+      .card { padding: 16px; }
+      .row .field { 
+        flex-basis: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Comparador rápido de productos</h1>
-    <p class="helper">Ingresa las <strong>unidades</strong> y el <strong>precio</strong> de dos productos. Podrás calcular el costo por unidad y saber cuál conviene más.</p>
+    <h1>Comparador de productos</h1>
+    <p class="helper">Ingresa las <strong>unidades</strong> y el <strong>precio</strong> de dos productos para calcular el costo por unidad y saber cuál conviene comprar.</p>
 
     <div class="grid" role="group" aria-labelledby="prod1">
       <div>
@@ -44,26 +49,25 @@
         <div class="row">
           <div class="field">
             <label for="u1">Unidades</label>
-            <input id="u1" type="number" inputmode="decimal" min="0.000001" step="0.000001" placeholder="por ejemplo, 10" required />
+            <input id="u1" type="number" inputmode="decimal" min="0" step="1" placeholder="p. ej., 10" required />
           </div>
           <div class="field">
             <label for="p1">Precio ($)</label>
-            <input id="p1" type="number" inputmode="decimal" min="0" step="0.01" placeholder="por ejemplo, 2.00" required />
+            <input id="p1" type="number" inputmode="decimal" min="0" step="1" placeholder="p. ej., 2.00" required />
           </div>
         </div>
         <div class="unit" id="uprice1">Costo por unidad: —</div>
       </div>
-
       <div>
         <h2 id="prod2" style="font-size:1.05rem;margin:4px 0 8px;">Producto 2</h2>
         <div class="row">
           <div class="field">
             <label for="u2">Unidades</label>
-            <input id="u2" type="number" inputmode="decimal" min="0.000001" step="0.000001" placeholder="por ejemplo, 6" required />
+            <input id="u2" type="number" inputmode="decimal" min="0" step="1" placeholder="p. ej., 6" required />
           </div>
           <div class="field">
             <label for="p2">Precio ($)</label>
-            <input id="p2" type="number" inputmode="decimal" min="0" step="0.01" placeholder="por ejemplo, 1.00" required />
+            <input id="p2" type="number" inputmode="decimal" min="0" step="1" placeholder="p. ej., 1.00" required />
           </div>
         </div>
         <div class="unit" id="uprice2">Costo por unidad: —</div>
@@ -71,16 +75,16 @@
     </div>
 
     <div class="actions">
-      <button id="calc">Calcular</button>
-      <button class="secondary" id="clear">Limpiar</button>
+      <button hidden id="calc">Calcular</button>
+      <button class="secondary" id="clear">Borrar</button>
     </div>
 
     <div class="result" id="result" aria-live="polite">
-      Ingresa los valores y presiona “Calcular”.
+      Ingresa los valores. Presiona “Borrar” para comenzar de nuevo.
     </div>
 
     <p class="muted" style="margin-top:10px;font-size:.9rem;">
-      Nota: esta herramienta compara los <em>costos por unidad</em> de cada producto, es decir, precio ÷ unidades. Si hay empate, se indicará.
+      Esta herramienta compara los <em>costos por unidad</em> de cada producto, es decir, precio ÷ unidades. Se indicará si hay empate entre ambos productos.
     </p>
   </div>
 
@@ -141,7 +145,7 @@
       $('uprice1').textContent = 'Costo por unidad: —';
       $('uprice2').textContent = 'Costo por unidad: —';
       $('result').className = 'result';
-      $('result').textContent = 'Ingresa los valores y presiona “Calcular”.';
+      $('result').textContent = 'Ingresa los valores. Presiona “Borrar” para comenzar de nuevo.';
       $('u1').focus();
     });
   </script>
@@ -152,4 +156,3 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');
 }
 </script>
-
