@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17324d">
+    <title>Gestores vs. CAT tools | Portafolio OCT</title>
+    <link rel="icon" href="../../img/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body data-root="../../" data-page="cat-tools">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+    <div id="sidebar-container"></div>
+    <div class="site-shell">
+        <div class="mobile-bar">
+            <button id="open-btn" class="icon-btn menu-button" type="button" aria-label="Abrir menú">☰</button>
+            <div class="mobile-bar__title"><strong>CAT Tools</strong><span>Entrada del portafolio</span></div>
+            <span aria-hidden="true">W</span>
+        </div>
+        <main id="contenido" class="main-content">
+            <header class="entry-header">
+                <p class="eyebrow">Gestores · CAT Tools</p>
+                <h1>Gestores de proyectos vs. CAT Tools</h1>
+                <p class="lead">Enfrentemos ambos tipos de herramienta. ¿Cuándo conviene usar cada una?</p>
+                <div class="entry-meta">
+                    <span>📅 Publicación: 4 de octubre de 2026</span>
+                    <span>✎ Autor: Daniel González</span>
+                </div>
+            </header>
+
+            <div class="entry-layout">
+                <article class="entry-body">
+                    <section id="introduccion">
+                        <h2><span class="section-number">01</span> Introducción</h2>
+                        <p>Quizá sea viable gestionar un proyecto completo en la mente. Pero solo
+                            si se trata de una sola persona. Para mantener múltiples profesionales coordinados
+                            respecto a las tareas hechas y por hacer, es necesaria una herramienta de gestión.
+                            ¿Será suficiente una CAT Tool para llevar un proyecto completo de traducción?
+                            ¿O es inevitable el uso de un gestor de proyectos tradicional?
+                        </p>
+                        <p>En esta entrada simularemos un encargo sencillo y compararemos las funciones que nos ofrecen
+                            dos destacadas herramientas: Trello (gestor de proyectos) y Matecat (CAT Tool).
+                        </p>
+                    </section>
+
+                    <section id="fasciculo">
+                        <h2><span class="section-number">02</span>El proyecto: Fascículo&nbsp;sobre el sistema solar</h2>
+                        <div class="feature-step">
+                            <p>Se nos ha asignado un fascículo sencillo sobre el sistema solar:</p>
+                            <figure class="screenshot">
+                                <img src="img/fasciculo.png">
+                                <figcaption>Figura 1. Página del fascículo sobre el sistema solar.</figcaption>
+                            </figure>
+                            <p>Qué amena lectura. Sin embargo, se trata de un archivo PDF cuyo texto no podemos seleccionar.
+                                Para&nbsp;elaborar la traducción será necesaria la ayuda de una herramienta de OCR (Optical Character Recognition:
+                                Reconocimiento Óptico de Caracteres en español). Más adelante abordaremos por qué es tan necesario este paso.
+                                Por los momentos, utilicemos la herramienta OCR de <a href="https://www.bentopdf.com/ocr-pdf">BentoPDF</a> para convertir el PDF a un documento de texto
+                                fácilmente editable.
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/bentopdf1.png">
+                                <figcaption>Figura 2. Herramienta OCR de BentoPDF</figcaption>
+                            </figure>
+                            <p>Tras seleccionar el archivo PDF, nos pedirá seleccionar los idiomas presentes en el documento. Seleccioné inglés y español:
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/bentopdf2.png">
+                                <figcaption>Figura 3. Opciones OCR de BentoPDF.</figcaption>
+                            </figure>
+                            <p>Luego de pulsar "Start OCR", debemos esperar. Tras unos momentos, veremos el resultado. Podremos descargarlo como un archivo .txt:</p>
+                            <figure class="screenshot">
+                                <img src="img/bentopdf3.png">
+                                <figcaption>Figura 4. Resultado del procesamiento del PDF a texto.</figcaption>
+                            </figure>
+                            <p>El resultado es imperfecto. La primera página del fascículo tiene una ilustración bonita con estrellas que el OCR confundió por texto. Tras una corta
+                                revisión y edición, quedó así:
+                                </p>
+                                <figure class="screenshot">
+                                <img src="img/bentopdf4.png ">
+                                <figcaption>Figura 5. Resultado tras la edición de los errores del OCR.</figcaption>
+                            </figure>
+                            <p>Ya estamos listos para abordar la primera herramienta.</p>
+                        </div>
+                    </section>
+
+                    <section id="CATTool">
+                        <h2><span class="section-number">03</span>CAT Tool: Matecat</h2>
+                        <div class="feature-step">
+                            <p>Las CAT Tools son herramientas de traducción asistida por computadora. Existen muchas, y todas
+                                tienen la misma misión: ayudar al traductor en su labor a través de memorias de traducción, gestores
+                                de terminología, alineadores de segmentos de texto, correctores ortográficos y demás. Entre las
+                                CAT Tools se encuentra <a href="https://www.matecat.com/">Matecat</a>, una herramienta gratuita que,
+                                a mi parecer, es excelente.
+                            </p>
+                            <p>Excelente pero no perfecta. Veamos qué ocurre si utilizamos el archivo PDF original para crear el proyecto de traducción.
+                                Para ello, el primer paso es iniciar sesión:
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/matecat1.png">
+                                <figcaption>Figura 6. Página principal de Matecat.</figcaption>
+                            </figure>
+                            <p>Tras iniciar sesión, tenemos la opción de subir el archivo:
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/matecat2.png">
+                                <figcaption>Figura 7. Matecat tras iniciar sesión.</figcaption>
+                            </figure>
+                            <p>Configuremos las opciones. Asignamos nombre de proyecto, idioma origen e idioma meta y el campo temático.</p>
+                            <figure class="screenshot">
+                                <img src="img/matecat3.png">
+                                <figcaption>Figura 8. Configuración inicial de Matecat.</figcaption>
+                            </figure>
+                            <p>Luego de pulsar "Analyze", Matecat aplicará su propio OCR al archivo PDF.</p>
+                            <figure class="screenshot">
+                                <img src="img/matecat4.png">
+                                <figcaption>Figura 9. Matecat procesa el archivo PDF y cuenta las palabras.</figcaption>
+                            </figure>
+                            <p>Tras unos segundos (esto depende del tamaño y complejidad del archivo), veremos el resultado. Un dato muy útil es que Matecat cuenta la cantidad de palabras del texto, por lo que podremos presupuestar al cliente con facilidad. A continuación, pulsamos "Translate".
+                                </p>
+                                <figure class="screenshot">
+                                <img src="img/matecat5.png ">
+                                <figcaption>Figura 10. Resultado tras el procesamiento de Matecat.</figcaption>
+                            </figure>
+                            <p>Esta es la interfaz de traducción de Matecat. Como podemos ver, todo parece ir viento en popa.
+                                La primera palabra del texto es "UNIVERSO", y pudo identificarla correctamente:
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/matecat6.png ">
+                                <figcaption>Figura 11. Resultado tras el procesamiento de Matecat.</figcaption>
+                            </figure>
+                            <p>Sin embargo, si hacemos scroll más abajo, veremos que tuvo confusiones serias que ralentizarán al traductor:
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/matecat7.png ">
+                                <figcaption>Figura 12. Errores cometidos por el OCR de Matecat.</figcaption>
+                            </figure>
+                            <p>En cambio, subir el archivo .txt nos librará de dichos errores:</p>
+                            <figure class="screenshot">
+                                <img src="img/matecat8.png ">
+                                <figcaption>Figura 13. Mismos segmentos, esta vez listos para trabajar sin interrupciones.</figcaption>
+                            </figure>
+                            <p>Ya podemos volver arriba y conocer mejor Matecat. El proceso básico es sencillo: traducimos la palabra de la izquierda y pulsamos "TRANSLATED". Matecat nos mostrará potenciales traducciones con base en el
+                                sudor y lágrimas de miles de traductores que colaboran para que la base terminológica general de Matecat sea cada vez mejor. Por ejemplo, "El Sistema Solar" viene ya traducido:
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/matecat9.png ">
+                                <figcaption>Figura 14. Matecat ya nos tradujo uno de los segmentos de texto.</figcaption>
+                            </figure>
+                            <p>Matecat hace un buen esfuerzo en su traducción a máquina, pero es imperfecto. Por ejemplo, en este segmento, al traductor podría no gustarle "trail" como traducción de "reguero". La pestaña "TM Search" permite buscar alternativas:</p>
+                            <figure class="screenshot">
+                                <img src="img/matecat10.png ">
+                                <figcaption>Figura 15. Matecat permite buscar alternativas en la pestaña "TM Search".</figcaption>
+                            </figure>
+                            <p>También existe la pestaña "Termbase", que permite buscar términos en una base terminológica subida manualmente por el usuario.</p>
+                        <figure class="screenshot">
+                                <img src="img/matecat11.png ">
+                                <figcaption>Figura 16. Matecat permite subir o crear una base terminológica (glosario).</figcaption>
+                            </figure>
+                            <p>Podemos añadir nuevos términos al glosario de manera sencilla. Permite añadir definición, el término en ambos idiomas, notas, ejemplos de uso, dominio y subdominio.</p>
+                        <figure class="screenshot">
+                                <img src="img/matecat12.png ">
+                                <figcaption>Figura 17. Cómo añadir términos al glosario de Matecat.</figcaption>
+                            </figure>
+                            <p>Además, la opción "Termbase" permite formalizar el glosario, en caso de que lo estemos creando por primera vez:</p>
+                        <figure class="screenshot">
+                                <img src="img/matecat13.png ">
+                                <figcaption>Figura 18. Configuración de glosario en Matecat.</figcaption>
+                            </figure>
+                            <p>Matecat destaca bastante en este aspecto. En caso de que estemos trabajando con otros profesionales,
+                                podemos compartir el recurso (en este caso, un glosario) para que los demás puedan acceder a los términos
+                                y se pueda manejar de manera sencilla la consistencia terminológica a lo largo y ancho del proyecto.
+                            </p>
+                            <p>Por ahora, hagamos clic en "New resource":</p>
+                            <figure class="screenshot">
+                                <img src="img/matecat14.png ">
+                                <figcaption>Figura 19. Podemos nombrar el glosario.</figcaption>
+                            </figure>
+                            <p>Tras dar nombre al glosario y confirmar, podemos ver diversas opciones adicionales:</p>
+                            <figure class="screenshot">
+                                <img src="img/matecat15.png ">
+                                <figcaption>Figura 20. Opciones de Matecat para la gestión del glosario.</figcaption>
+                            </figure>
+                            <p>Nos permite importar términos al glosario en formato TMX, exportarlo, compartirlo y eliminarlo. Es muy útil.</p>
+                            <p>Matecat cuenta con otras herramientas útiles. Por ejemplo, al pulsar el botón "QA" en la barra superior,
+                                podremos ver las sugerencias de Lexiqa, su motor de control de calidad. En este caso, nos avisa que existen comillas
+                                de cierre, pero no de apertura. Las comillas de apertura se encuentran en un segmento distinto, por lo que esto
+                                no es un problema real, pero nunca está de más tener una máquina que le eche un ojo al texto, quizá en alguna ocasión
+                                sí falten las comillas.
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/matecat16.png ">
+                                <figcaption>Figura 21. Lexiqa identifica un potencial problema en la traducción.</figcaption>
+                            </figure>
+                            <p>El botón "QR" genera un reporte de calidad. Todavía no hemos trabajado en la traducción, por lo que en este caso, no tiene nada que reportar.</p>
+                            <figure class="screenshot">
+                                <img src="img/matecat17.png ">
+                                <figcaption>Figura 22. Reporte de calidad de Matecat.</figcaption>
+                            </figure>
+                            <p>El reporte cuenta con varias señales útiles. Nos informa sobre el estilo, problemas con etiquetas (útil en la localización
+                                de videojuegos, por ejemplo), errores de traducción, consistencia terminológica y problemas lingüísticos varios. Además, se puede buscar por segmento,
+                                filtrar los problemas y abordarlos uno a uno.<p>
+                            <p>El reporte de calidad tiene opciones adicionales para revisar, volver a la interfaz de traduccción y descargar el reporte en diversos formatos:
+                            <figure class="screenshot">
+                                <img src="img/matecat18.png ">
+                                <figcaption>Figura 23. Opciones adicionales del menú del reporte de calidad.</figcaption>
+                            </figure>
+                            <p>El botón de la lupa permite buscar términos de manera sencilla e incluso reemplazarlos automáticamente:<p>
+                            <figure class="screenshot">
+                                <img src="img/matecat19.png ">
+                                <figcaption>Figura 24. Menú de la lupa en el traductor de Matecat.</figcaption>
+                            </figure>
+                            <p>El botón del embudo permite filtrar los segmentos para hallar alguno en específico:<p>
+                            <figure class="screenshot">
+                                <img src="img/matecat20.png ">
+                                <figcaption>Figura 25. Menú del embudo en el traductor de Matecat.</figcaption>
+                            </figure>
+                            <p>El menú de descarga permite descargar el borrador actual, el archivo original, el archivo XLIFF (para importar
+                                en alguna otra CAT Tool), y el archivo TMX con la memoria de traducción.<p>
+                            <figure class="screenshot">
+                                <img src="img/matecat21.png ">
+                                <figcaption>Figura 26. Opciones de descarga.</figcaption>
+                            </figure>
+                            <p>El menú de configuración tiene diversas opciones avanzadas: <p>
+                            <figure class="screenshot">
+                                <img src="img/matecat22.png ">
+                                <figcaption>Figura 27. Opciones de configuración avanzada.</figcaption>
+                            </figure>
+                            <p>El menú de la foto de perfil permite acceder a los proyectos. Aquí se puede renombrar el proyecto, ver cuántas palabras han sido traducidas y se puede asignar el proyecto a otro traductor:</p>
+                            <figure class="screenshot">
+                                <img src="img/matecat23.png ">
+                                <figcaption>Figura 28. Vista general del proyecto.</figcaption>
+                            </figure>
+                            <p>Si seleccionamos "Assign job to translator", tendremos la opción de ingresar el correo electrónico
+                                del traductor que queremos asignar al proyecto. Además, podemos indicar la fecha y hora en que queremos
+                                que la traducción esté lista:
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/matecat24.png ">
+                                <figcaption>Figura 29. Menú para asignar un proyecto a un traductor, o comprar una traducción.</figcaption>
+                            </figure>
+                            <p>Por último, en el menú "Create new team" podemos crear un equipo para que múltiples traductores tengan acceso
+                                al mismo proyecto de traducción:
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/matecat25.png ">
+                                <figcaption>Figura 30. Menú para crear un equipo.</figcaption>
+                            </figure>
+                        </div>
+                    </section>
+
+                    <section id="gestor">
+                        <h2><span class="section-number">04</span>Gestor: Trello</h2>
+                        <p>Trello es una herramienta de gestión de proyectos (o de cualquier cosa) muy popular. El primer paso es iniciar sesión:
+                        <figure class="screenshot">
+                                <img src="img/trello1.png ">
+                                <figcaption>Figura 31. Página principal de Trello.</figcaption>
+                            </figure>
+                        <p>Tras iniciar sesión, veremos el tablero de Trello. Me encargué de crear un sencillo ejemplo:</p>
+                        <figure class="screenshot">
+                                <img src="img/trello2.png ">
+                                <figcaption>Figura 32. Tablero de Trello.</figcaption>
+                            </figure>
+                            <p>Gracias al botón "Add another list", podemos crear listas de tareas individuales. Por ejemplo, como
+                                la tarea "Procesar el OCR del texto original" ya está completada, la moví a la lista de tareas completadas. Lo mismo aplica
+                                para la tarea "Presupuestar el proyecto".
+                            </p>
+                            <p>En este sencillo ejemplo, dividí las tareas del proyecto en 4 secciones: Tareas generales, segmentos por traducir, segmentos por revisar, y tareas completadas.</p>
+                            <p>Si bien puede ser una herramienta muy útil para un traductor por sí solo, el verdadero poder de un gestor de proyectos
+                                como Trello es su capacidad de coordinar a múltiples personas. Esto se logra a través del menú "Share":
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/trellocompartir.png ">
+                                <figcaption>Figura 33. Menú "Share" de Trello.</figcaption>
+                            </figure>
+                            <p>Añadir a un compañero es tan sencillo como añadir su dirección de correo electrónico y pulsar "Share". Otra opción es compartir
+                                directamente el link del tablero.
+                            </p>
+                            <p>Luego, podemos hacer clic en alguna tarea y asignarla a alguno de nuestros compañeros. En este ejemplo, le asigné la tarea
+                                de avisar al cliente sobre el avance del proyecto.
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/trello3.png ">
+                                <figcaption>Figura 34. Cómo asignar una tarea específica a un miembro del equipo.</figcaption>
+                            </figure>
+                            <p>Trello brilla en sus capacidades de comunicación y coordinación. Además del mensaje escrito que pude
+                                enviar a mi compañera, puedo etiquetar esta tarea como urgente, establecer una fecha límite, adjuntar archivos
+                                y crear una lista de subtareas específicas:
+                            </p>
+                            <figure class="screenshot">
+                                <img src="img/trello4.png ">
+                                <figcaption>Figura 35. Funciones adicionales de Trello para la comunicación y coordinación.</figcaption>
+                            </figure>
+                            <p>Nuestros compañeros podrán dejar comentarios en la sección de comentarios de la tarea:</p>
+                            <figure class="screenshot">
+                                <img src="img/trello5.png ">
+                                <figcaption>Figura 36. Comentarios en las tareas de Trello.</figcaption>
+                            </figure>
+                            <p>Esas son las principales funciones de Trello. Tiene muchas más, como la automatización por reglas, entre otras, pero muchas
+                                funciones son de pago. Además, estas funciones básicas son suficientes para un proyecto de traducción.
+                            </p>
+                        </section>
+
+                    <section id="conclusion">
+                        <h2><span class="section-number">05</span> Conclusión y reflexión</h2>
+                        <p>¿Qué herramienta es mejor?</p>
+                        <p>¡Ambas! No hay herramienta mejor. Son herramientas distintas, con objetivos distintos, que podemos
+                            combinar para que se cubran las espaldas entre sí.</p>
+                           <p>Matecat es espectacular para el proceso de traducción per se. Cuenta con glosarios, traductor automático,
+                            control de calidad, exportación de archivos en múltiples formatos, análisis de coincidencias y mucho más.</p>
+                            <p>Sin embargo, sus capacidades como gestor de proyectos es bastante limitada: no permite asignar tareas que se escapen al proceso de traducción,
+                                como la conversión de un PDF a texto a través de OCR, la revisión del resultado de dicho proceso de OCR, solicitar a alguien que se comunique con
+                                el cliente, entre otros.</p>
+                            <p>En esos aspectos, Trello es fantástico. Brinda un control granular de cada etapa del proceso, incluidas aquellas
+                                que se escapen al proceso de traducción como tal. Permite asignar tareas, comentar, establecer fechas, etiquetar la importancia
+                                de ciertas labores, adjuntar archivos relevantes, separar las tareas en subtareas, automatizar, y comunicarse con los miembros
+                                del equipo de manera mucho más clara y directa. Matecat sencillamente no cuenta con las herramientas para esto.</p>
+                                <p>En la unión está la fuerza. Trello no tiene ni una sola de las herramientas de traducción que tiene Matecat. Y Matecat no brinda las posibilidades
+                                    comunicativas y de coordinación que otorga Trello. Entre ambas herramientas, será pan comido gestionar un proyecto de traducción: comunicación eficiente,
+                                    fechas claras, gestión de la urgencia de las tareas, traducción automática, memorias de traducción, glosarios y control de calidad.</p>
+                    
+                    </section>
+
+                    <section id="referencias" class="references">
+                        <h2><span class="section-number">06</span> Referencias</h2>
+                        <ul>
+                            <li>Uso propio de Matecat y Trello.</a></li>
+                        </ul>
+                    </section>
+                </article>
+
+                <aside class="entry-toc" aria-label="Contenido de la entrada">
+                    <strong>En esta entrada</strong>
+                    <ol>
+                        <li><a href="#introduccion">Introducción</a></li>
+                        <li><a href="#fasciculo">El proyecto</a></li>
+                        <li><a href="#CATTool">CAT Tool: Matecat</a></li>
+                        <li><a href="#gestor">Gestor: Trello</a></li>
+                        <li><a href="#conclusion">Conclusión</a></li>
+                        <li><a href="#referencias">Referencias</a></li>
+                    </ol>
+                </aside>
+            </div>
+
+            <footer class="footer"><div class="footer__inner"><a href="cat-tools.html">← Volver a CAT Tools</a><span>Última actualización: 4 de octubre de 2026</span></div></footer>
+        </main>
+    </div>
+    <script src="../../script.js"></script>
+</body>
+</html>
